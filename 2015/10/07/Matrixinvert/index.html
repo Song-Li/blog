@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Matrix invert | Song Li(Seanlee) Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Author: Song LiDownload Project ##AIM##This program is used to generate, invert matrix. Just use row addups and swaps rows randomly to generate a invertable matrix.">
+<meta name="keywords" content="ADV Programming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matrix invert">
+<meta property="og:url" content="http://blog.songli.us/2015/10/07/Matrixinvert/index.html">
+<meta property="og:site_name" content="Song Li(Seanlee) Blog">
+<meta property="og:description" content="Author: Song LiDownload Project ##AIM##This program is used to generate, invert matrix. Just use row addups and swaps rows randomly to generate a invertable matrix.">
+<meta property="og:updated_time" content="2017-05-31T15:08:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Matrix invert">
+<meta name="twitter:description" content="Author: Song LiDownload Project ##AIM##This program is used to generate, invert matrix. Just use row addups and swaps rows randomly to generate a invertable matrix.">
+  
+    <link rel="alternative" href="/atom.xml" title="Song Li(Seanlee) Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/image/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  
+  
+      <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+      <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false,
+      }
+  </script>
+
+  
+      <script>
+          yiliaConfig.rootUrl = "/";
+      </script>
+  
+
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/image/avatar.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Song Li</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">A Programmer&#39;s Life</p>
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">home</a></li>
+                        
+                            <li><a href="/archives/">archives</a></li>
+                        
+                            <li><a href="/tags/">tags</a></li>
+                        
+                            <li><a href="/download/">download</a></li>
+                        
+                            <li><a href="/profile/">about</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="/lisong1013@gmail.com" title="Email"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADV-Programming/">ADV Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IS/">IS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Fingerprinting/">Machine Fingerprinting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Notes/">Notes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Piano-sheet/">Piano sheet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Play/">Play</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">Coding</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Song Li</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/image/avatar.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Song Li</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">A Programmer&#39;s Life</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">home</a></li>
+                
+                    <li><a href="/archives/">archives</a></li>
+                
+                    <li><a href="/tags/">tags</a></li>
+                
+                    <li><a href="/download/">download</a></li>
+                
+                    <li><a href="/profile/">about</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="/lisong1013@gmail.com" title="Email"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Matrixinvert" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/07/Matrixinvert/" class="article-date">
+      <time datetime="2015-10-08T00:25:18.000Z" itemprop="datePublished">2015-10-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Matrix invert
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ADV-Programming/">ADV Programming</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Author: Song Li<br><a href="/download/Matrix-invert.zip">Download Project</a></p>
+<p>##AIM##<br>This program is used to generate, invert matrix. Just use row addups and swaps rows randomly to generate a invertable matrix.<br><a id="more"></a></p>
+<p>##USAGE##</p>
+<ul>
+<li>Invert Matrix: To use the invert function, users need to input the Maxtric File right after the program. Here is an example: $$./debug/invert~./debug/input$$</li>
+<li>Generate Matrix: To use the generate function, users need to input $-g$ after the program and the size of matrix after the $-g$. Here is an example:<br>$$./debug/invert~-g~3$$<br>This command will generate a $3*3$ matrix, and this maxtrix will be output to the terminal and stored in the $./debug/generate$ file at the same time.<br>##COMPILE##<br>Just use $make$ in the root dir of this program to compile this program. I didn’t modify the $Makefile$<br>##FILE STRUCTURE##</li>
+<li>Makefile</li>
+<li>README.pdf</li>
+<li>debug/: contains the runable program and generated matrix</li>
+<li>matrix1-sol315.txt</li>
+<li>matrix2-sol315.txt</li>
+<li>object/</li>
+<li>pivoting-sol315.txt</li>
+<li>source/main.cpp: main code of this program</li>
+<li>source/StdAfx.cpp: useless</li>
+<li>source/StdAfx.h: head file </li>
+<li>source/parseMatrix.cpp: this code is used to input and output the matrix</li>
+<li>source/parseMatrix.h: head file of paraseMatrix.cpp<br>##RESULT##<br>Most of the result will be output directely in the terminal. The generated matrix will be output in both terminal and $/debug/generate$ file.<br>##DESIGN##<br>In this part, I mainly talk about how I generate a matrix which is invertable.<br>Firstly, I generate a matrix which is random double numbers in the diagonal line, and other numbers are all 0. Like this:<br>$$<br>\begin{bmatrix}<br>1.231 &amp; 0.000 &amp; 0.000 &amp; 0.000 \\<br>0.000 &amp; 1.002 &amp; 0.000 &amp; 0.000 \\<br>0.000 &amp; 0.000 &amp; 1923.412 &amp; 0.000 \\<br>0.000 &amp; 0.000 &amp; 0.000 &amp; 0.023 \\<br>\end{bmatrix}<br>$$</li>
+</ul>
+<p>After that, I randomly pick a line, use a random double number times every number of this line, and add it to another random line.If I pick line 2 and number 2, and add this line to the 4th line. The result will be like<br>$$<br>\begin{bmatrix}<br>1.231&amp;0.000&amp;0.000&amp;0.000 \\<br>0.000&amp;1.002&amp;0.000&amp;0.000 \\<br>0.000&amp;0.000&amp;1923.412&amp;0.000 \\<br>0.000&amp;2.004&amp;0.000&amp;0.023 \\<br>\end{bmatrix}<br>$$<br>Some times later, we can get a random matrix. Generately speaking, we can get every matrix in this way.</p>
+<p>Main function code is here. The whole project can be downloaded from the link at the begining of this blog.</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div><div class="line">398</div><div class="line">399</div><div class="line">400</div><div class="line">401</div><div class="line">402</div><div class="line">403</div><div class="line">404</div><div class="line">405</div><div class="line">406</div><div class="line">407</div><div class="line">408</div><div class="line">409</div><div class="line">410</div><div class="line">411</div><div class="line">412</div><div class="line">413</div><div class="line">414</div><div class="line">415</div><div class="line">416</div><div class="line">417</div><div class="line">418</div><div class="line">419</div><div class="line">420</div><div class="line">421</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span></div><div class="line"><span class="regexp">//Implementation for the Main method</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">//</span></div><div class="line"></div><div class="line"><span class="comment">#include "StdAfx.h"</span></div><div class="line"></div><div class="line"></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line"></div><div class="line">inline double getRandDouble()&#123;</div><div class="line">    return (double)rand() / (double)rand() * (double)((rand() &amp; 1 &lt;&lt; 1) - 1);</div><div class="line">&#125;</div><div class="line">void defaultOutput()</div><div class="line">&#123;</div><div class="line">		printf("\n");</div><div class="line">		printf("<span class="comment">#########################################################\n");</span></div><div class="line">		printf("<span class="comment">## 411 Homework: Numerical Analysis                    ##\n");</span></div><div class="line">		printf("<span class="comment">## Brian Chen, Oct 20, 2012                            ##\n");</span></div><div class="line">		printf("<span class="comment">#########################################################\n");</span></div><div class="line">		printf("\n");</div><div class="line">		printf("Usage:\n");</div><div class="line">		printf("\n");</div><div class="line">		printf("invert \n");</div><div class="line">		printf("With no arguments, invert returns this usage statement.\n");</div><div class="line">		printf("\n");</div><div class="line">		printf("invert &lt;filename&gt;\n");</div><div class="line">		printf("Prints out two matrix inverses for the provided matrix.\n");</div><div class="line">		printf(" -- the first inverse is computed with simple inversion.\n");</div><div class="line">		printf(" -- the second is computed with partial pivoting\n");</div><div class="line">		printf("\n");</div><div class="line">		printf("invert -format\n");</div><div class="line">		printf("Describes the file format for the input file.\n");</div><div class="line">		printf("\n");</div><div class="line">		printf("<span class="comment">#########################################################\n");</span></div><div class="line">		printf("\n");</div><div class="line">		exit(0);</div><div class="line">&#125;</div><div class="line"></div><div class="line">void fileFormat()</div><div class="line">&#123;</div><div class="line">		printf("\n");</div><div class="line">		printf("<span class="comment">#########################################################\n");</span></div><div class="line">		printf("<span class="comment">## 411 Homework: Numerical Analysis                    ##\n");</span></div><div class="line">		printf("<span class="comment">## Brian Chen, Oct 20, 2012                            ##\n");</span></div><div class="line">		printf("<span class="comment">#########################################################\n");</span></div><div class="line">		printf("\n");</div><div class="line">		printf("File format for a 3rd order matrix (input):\n");</div><div class="line">		printf(" - numbers below are space deliminated.  no tabs.\n");</div><div class="line">		printf(" - There are three lines, each with 3 numbers.\n");</div><div class="line">		printf(" - They will be parsed as doubles.\n");</div><div class="line">		printf(" - Comment lines start with <span class="comment">#.  Comment lines cannot.\n");</span></div><div class="line">		printf("   interrupt the 3 lines with the matrix, but can come.\n");</div><div class="line">		printf("   before or after.\n");</div><div class="line">		printf("\n");</div><div class="line">		printf("---- Matrix file below, not including this line ----\n");</div><div class="line">		printf("<span class="comment"># comment\n");</span></div><div class="line">		printf("<span class="comment"># comment\n");</span></div><div class="line">		printf("1.2 3.3 4.4\n");</div><div class="line">		printf("1.112 2.24 0\n");</div><div class="line">		printf("3.4 2.2 98.23452\n");</div><div class="line">		printf("<span class="comment">#\n");</span></div><div class="line">		printf("<span class="comment">#\n");</span></div><div class="line">		printf("---- Matrix file above, not including this line ----\n");</div><div class="line">		printf("\n");</div><div class="line">		printf("<span class="comment">#########################################################\n");</span></div><div class="line">		printf("\n");</div><div class="line">		exit(0);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line">//<span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">///</span></div><div class="line"></div><div class="line">//Inside the result, the result <span class="keyword">is</span> <span class="keyword">to</span> be stored as:</div><div class="line"><span class="regexp">//i=0 i=1 i=2</span></div><div class="line">//[<span class="number">0</span>] [<span class="number">3</span>] [<span class="number">6</span>]  <span class="regexp">//j=0</span></div><div class="line">//[<span class="number">1</span>] [<span class="number">4</span>] [<span class="number">7</span>]  <span class="regexp">//j=1</span></div><div class="line">//[<span class="number">2</span>] [<span class="number">5</span>] [<span class="number">8</span>]  <span class="regexp">//j=2</span></div><div class="line">//</div><div class="line"><span class="regexp">//where the above 3x3 matrix is as you would write it on paper.</span></div><div class="line">//</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * this function is mainly used for debug. we can use it to output</div><div class="line"> *</div><div class="line"> * @param m: the matrix that needed to be output</div><div class="line"> *        size: the size of matrix</div><div class="line"> * @return NULL</div><div class="line"> **/</div><div class="line"><span class="literal">void</span> output(double  ** m,int size)&#123;</div><div class="line">    <span class="keyword">if</span>(DEBUG == <span class="number">0</span>) <span class="keyword">return</span> ;<span class="regexp">//Debug is defined in StdAfx.h </span></div><div class="line">    for(int i = 0;i &lt; size;++ i)&#123;</div><div class="line">        for(int j = 0;j &lt; size + size;++ j)&#123;</div><div class="line">            if(j == size) printf("|\t");</div><div class="line">            printf("%f\t",m[i][j]);</div><div class="line">        &#125;</div><div class="line">        printf("\n");</div><div class="line">    &#125;</div><div class="line">    printf("\n");</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * this function is mainly used to swap two lines in a matrix</div><div class="line"> *</div><div class="line"> * @param matrix: the matrix that needed to be swaped</div><div class="line"> *        a: the first line which should be swaped</div><div class="line"> *        b: the second line which should be swaped</div><div class="line"> *        size: the size of the matrix</div><div class="line"> * @return NULL</div><div class="line"> **/</div><div class="line"></div><div class="line">void swap(double ** matrix,int a,int b,int size)&#123;</div><div class="line">    output(matrix,size);</div><div class="line">    double tmp[1000];</div><div class="line">    memcpy(tmp,matrix[a],size * 2 * sizeof(double));</div><div class="line">    memcpy(matrix[a],matrix[b], size * 2 * sizeof(double));</div><div class="line">    memcpy(matrix[b],tmp,size * 2 * sizeof(double));</div><div class="line">    output(matrix,size);</div><div class="line">    return ;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">/**</div><div class="line"> * this function is used to get the Max line of the matrix and swap it to the first line</div><div class="line"> *</div><div class="line"> * @param tmp: the matrix</div><div class="line"> *        k: the col that we should find the max line</div><div class="line"> *        size: the size of matrix</div><div class="line"> * @return NULL</div><div class="line"> **/</div><div class="line">void getMax(double ** tmp, int k,int size)&#123;</div><div class="line">    int Max = k;</div><div class="line">    for(int i = k + 1;i &lt; size;++ i)&#123;</div><div class="line">        if(fabs(tmp[i][k]) &gt; fabs(tmp[Max][k])) Max = i; //get the max line</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(Max != k) &#123;</div><div class="line">        swap(tmp,Max,k,size);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * this function is used to do the most important things, invert the matrix</div><div class="line"> *</div><div class="line"> * @param matrix: the matrix that needed to be inverted</div><div class="line"> *        type: it is the simple one or pivot one</div><div class="line"> *              1: pivot 2:simple</div><div class="line"> *        size: the size of matrix;</div><div class="line"> **/ </div><div class="line">double ** runTmp(double ** matrix, bool type,int size)&#123;</div><div class="line">	int i = <span class="number">0</span>;</div><div class="line">    double div;</div><div class="line"></div><div class="line">    double ** tmp = <span class="keyword">new</span> double*[size];</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; size;i ++)&#123;</div><div class="line">        tmp[i] = <span class="keyword">new</span> double[size + size];</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; size;++ i)&#123;<span class="regexp">//read matrix into tmp matrix and add i after matrix</span></div><div class="line">        for(int j = 0;j &lt; size + size;++ j)&#123;</div><div class="line">            if(j &lt; size) tmp[i][j] = matrix[i][j];</div><div class="line">            else tmp[i][j] = (j - size == i);//if <span class="literal">it</span> <span class="keyword">is</span> <span class="keyword">not</span> the original matrix, add <span class="number">1s</span> <span class="keyword">and</span> <span class="number">0s</span> <span class="keyword">to</span> the i matrix</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(int k = <span class="number">0</span>;k &lt; size;++ k)&#123;</div><div class="line">        <span class="keyword">if</span>(type) getMax(tmp,k,size);<span class="regexp">//if it is pivot one, just get the max line and swap it to the first line</span></div><div class="line">        while(tmp[k][k] == 0 &amp;&amp; k &lt; size - 1) swap(tmp,k,k + 1,size), ++k;//<span class="keyword">try</span> <span class="keyword">to</span> get the <span class="literal">no</span>-zero line </div><div class="line">        <span class="keyword">if</span>(!tmp[k][k])&#123;<span class="regexp">// this maxtrix is not invertable</span></div><div class="line">            printf("This Matrix can\'t be inverted\n");</div><div class="line">            exit(0);</div><div class="line">        &#125;</div><div class="line">        for(i = k + 1;i &lt; size;++ i)&#123;</div><div class="line">            if((div = tmp[i][k] / tmp[k][k]) == 0) continue;</div><div class="line">            for(int j = k;j &lt; size + size;++ j)&#123;</div><div class="line">                tmp[i][j] -= div * tmp[k][j];// solve <span class="keyword">this</span> line</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(int k = size - <span class="number">1</span>;k &gt;= <span class="number">0</span>;-- k)&#123;</div><div class="line">        <span class="keyword">for</span>(i = k;i &gt;= <span class="number">0</span>;-- i)&#123;</div><div class="line">            <span class="keyword">if</span>(!tmp[k][k])&#123;</div><div class="line">                printf(<span class="string">"This Matrix can\'t be inverted\n"</span>);</div><div class="line">                exit(<span class="number">0</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>((div = tmp[i][k] / tmp[k][k]) == <span class="number">0</span>) <span class="keyword">continue</span>;</div><div class="line">            <span class="keyword">for</span>(int j = size + size - <span class="number">1</span>;j &gt;= <span class="number">0</span>;-- j)&#123;</div><div class="line">                <span class="keyword">if</span>(i == k) tmp[i][j] /= tmp[k][k];</div><div class="line">                <span class="keyword">else</span> tmp[i][j] -= div * tmp[k][j]; </div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        output(tmp,size);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> tmp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * this function is used to do simple inversion</div><div class="line"> *</div><div class="line"> * @param matrix: the matrix that needed to be inverted</div><div class="line"> *        size: the size of matrix</div><div class="line"> * @return the matrix that has been inverted</div><div class="line"> **/</div><div class="line">double ** simpleMatrixInversion( double ** matrix ,int size)&#123;</div><div class="line">    int i = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="regexp">//insert your code here.//</span></div><div class="line">    double ** tmp = runTmp(matrix, <span class="number">0</span>,size);</div><div class="line">    <span class="regexp">//declare and allocate the result</span></div><div class="line">    double ** result = new double*[size];</div><div class="line">    for(i = 0; i&lt;size; i++)&#123;</div><div class="line">        result[i] = new double[size];</div><div class="line">        for(int j = 0;j &lt; size;++ j)&#123;</div><div class="line">            result[i][j] = tmp[i][j + size];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">	return result;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">/**</div><div class="line"> * this function is used to do pivot inversion</div><div class="line"> *</div><div class="line"> * @param matrix: the matrix that needed to be inverted</div><div class="line"> *        size: the size of matrix</div><div class="line"> * @return the matrix that has been inverted</div><div class="line"> **/</div><div class="line"></div><div class="line">double ** partialPivotInversion( double ** matrix,int size )&#123;</div><div class="line">	int i = 0;</div><div class="line"></div><div class="line">	//insert your code here.<span class="regexp">//</span></div><div class="line">    double ** tmp = runTmp(matrix,1,size);</div><div class="line"></div><div class="line">	//declare <span class="keyword">and</span> allocate the result</div><div class="line">    double ** result = <span class="keyword">new</span> double*[size];</div><div class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i&lt;size; i++)&#123;</div><div class="line">        result[i] = <span class="keyword">new</span> double[size];</div><div class="line">        <span class="keyword">for</span>(int j = <span class="number">0</span>;j &lt; size;++ j)&#123;</div><div class="line">            result[i][j] = tmp[i][j + size];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> result;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * this function is used to plus one line to another line</div><div class="line"> * this function is used in generate step</div><div class="line"> *</div><div class="line"> * @param m:the matrix that needed to be changed</div><div class="line"> *        size: the size of maxtrix</div><div class="line"> * @return NULL</div><div class="line"> **/</div><div class="line"><span class="literal">void</span> linePlus(double ** m, int size)&#123;</div><div class="line">    double times = getRandDouble();</div><div class="line">    int line1 = rand() % size, line2 = rand() % size;</div><div class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; size;++ i)&#123;</div><div class="line">        m[line1][i] += m[line2][i] * times;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * this function is used to generate matrix</div><div class="line"> * @param size: the size of matrix that needed to be generated</div><div class="line"> * @return the generated matrix</div><div class="line"> **/</div><div class="line">double ** generateMatrix(int size)&#123;</div><div class="line">    srand((unsigned)time(NULL));</div><div class="line">    double ** m = <span class="keyword">new</span> double *[size];</div><div class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; size;++ i) m[i] = <span class="keyword">new</span> double[size];</div><div class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; size;++ i)&#123;</div><div class="line">        m[i][i] = getRandDouble();<span class="regexp">//get the initiate matrix, whose main line are random doubles and others are 0s.</span></div><div class="line">    &#125;</div><div class="line">    int times = size * 8; //we need <span class="keyword">to</span> modify <span class="keyword">this</span> matrix <span class="string">"times"</span> times. we set times = size * <span class="number">8</span></div><div class="line">    printf(<span class="string">"Time = %d\n"</span>,times);</div><div class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; times;++ i)&#123;</div><div class="line">        linePlus(m, size);<span class="regexp">//add a random line to another random line</span></div><div class="line">    &#125;</div><div class="line">    ofstream out("./debug/generate");//output the matrix <span class="keyword">to</span> a file</div><div class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; size;++ i)&#123;</div><div class="line">        <span class="keyword">for</span>(int j = <span class="number">0</span>;j &lt; size;++ j)&#123;</div><div class="line">            out &lt;&lt; m[i][j] &lt;&lt; <span class="string">' '</span>;</div><div class="line">        &#125;</div><div class="line">        out &lt;&lt; endl;</div><div class="line">    &#125;</div><div class="line">    printf(<span class="string">"Matrix has been stored to ./debug/generate\n"</span>);</div><div class="line">    <span class="keyword">return</span> m;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * this function is used to compare two matrix</div><div class="line"> * @param two matrix and their size</div><div class="line"> * @return if they are same</div><div class="line"> * tip: this eps is defined in StdAfx.h </div><div class="line"> **/</div><div class="line">bool compare(double ** m1, double ** m2,int size)&#123;</div><div class="line">    <span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; size;++ i)&#123;</div><div class="line">        <span class="keyword">for</span>(int j = <span class="number">0</span>;j &lt; size;++ j)&#123;</div><div class="line">            <span class="keyword">if</span>(fabs(m1[i][j] - m2[i][j]) &gt; eps) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span>/</div><div class="line"><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span>/</div><div class="line"><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span>/</div><div class="line"><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span>/</div><div class="line"><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span>/</div><div class="line"><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span>/</div><div class="line"><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span>/</div><div class="line"><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span>/</div><div class="line"><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span>/</div><div class="line"></div><div class="line"><span class="regexp">// <span class="comment">###     ###     ###    ####### ###     ###    ###     ### ####### ####### ###   ###   ######   ######  </span></span></div><div class="line">// <span class="comment">####   ####    #####   ####### ####    ###    ####   #### ####### ####### ###   ###  ########  ####### </span></div><div class="line"><span class="regexp">// <span class="comment">##### #####    #####     ###   #####   ###    ##### ##### ###       ###   ###   ### ########## ########</span></span></div><div class="line">// <span class="comment">###########   ### ###    ###   ######  ###    ########### #######   ###   ######### ####  #### ###  ###</span></div><div class="line"><span class="regexp">// <span class="comment">### ### ###   ### ###    ###   ### ### ###    ### ### ### #######   ###   ######### ###    ### ###  ###</span></span></div><div class="line">// <span class="comment">###  #  ###  ###   ###   ###   ###  ######    ###  #  ### ###       ###   ######### ####  #### ###  ###</span></div><div class="line"><span class="regexp">// <span class="comment">###     ###  #########   ###   ###   #####    ###     ### ###       ###   ###   ### ########## ########</span></span></div><div class="line">// <span class="comment">###     ###  ######### ####### ###    ####    ###     ### #######   ###   ###   ###  ########  ######## </span></div><div class="line"><span class="regexp">// <span class="comment">###     ###  ###   ### ####### ###     ###    ###     ### #######   ###   ###   ###   ######   ######  </span></span></div><div class="line"></div><div class="line">//execution format : [executable name] [argument]</div><div class="line">int main(int argc, char* argv[])</div><div class="line">&#123;</div><div class="line">    int size;</div><div class="line">	<span class="regexp">///usage handling</span></div><div class="line">	if( argc == 1 )&#123;</div><div class="line">		defaultOutput();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	///file format handling</div><div class="line">	<span class="keyword">if</span>( argc == <span class="number">2</span> &amp;&amp; ( strcmp(argv[<span class="number">1</span>], <span class="string">"-format"</span>)==<span class="number">0</span> ) )&#123;</div><div class="line">		fileFormat();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="regexp">///invert</span></div><div class="line">	if( argc == 2 &amp;&amp; ( strcmp(argv[1], "-format")!=0 ) )&#123;</div><div class="line">		double ** matrix = parseMatrixFile( argv[1], &amp;size );</div><div class="line"></div><div class="line">        if(strcmp(argv[1],"-g") == 0) &#123;</div><div class="line">            matrix = generateMatrix(3);</div><div class="line">            printf("Generate matrix with order 3\n");</div><div class="line">        &#125;</div><div class="line">		</div><div class="line">		//compute the simple inverse <span class="keyword">and</span> <span class="built_in">print</span> <span class="literal">it</span></div><div class="line">		double ** simpleInverse = simpleMatrixInversion( matrix,size);</div><div class="line">        printf(<span class="string">"The simple inverse result is:\n"</span>);</div><div class="line">		printMatrix(simpleInverse,size);</div><div class="line">		</div><div class="line">		<span class="regexp">//compute the inverse with partial pivoting and print it</span></div><div class="line">		double ** partialInverse = partialPivotInversion( matrix,size);</div><div class="line">        printf("The pivot inverse result is:\n");</div><div class="line">		printMatrix(partialInverse,size);</div><div class="line">        if(compare(simpleInverse,partialInverse,size)) printf("Same\n");</div><div class="line">        else printf("Different\n");</div><div class="line">		</div><div class="line">		//clean up</div><div class="line">		<span class="keyword">for</span>(int i = <span class="number">0</span>; i&lt;size; i++)&#123;</div><div class="line">			<span class="keyword">delete</span>[](simpleInverse[i]);</div><div class="line">			<span class="keyword">delete</span>[](partialInverse[i]);</div><div class="line">			<span class="keyword">delete</span>[](matrix[i]);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">delete</span>[](simpleInverse);</div><div class="line">		<span class="keyword">delete</span>[](partialInverse);</div><div class="line">		<span class="keyword">delete</span>[](matrix);</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">    <span class="keyword">if</span>(argc == <span class="number">3</span> &amp;&amp; (strcmp(argv[<span class="number">1</span>], <span class="string">"-g"</span>) == <span class="number">0</span>))&#123;</div><div class="line">        size = atoi(argv[<span class="number">2</span>]);</div><div class="line">        <span class="keyword">if</span>(size &lt; <span class="number">2</span>)&#123;</div><div class="line">            printf(<span class="string">"The size of matrix must bigger than 1\n"</span>);</div><div class="line">            exit(<span class="number">0</span>);</div><div class="line">        &#125;</div><div class="line">        double ** matrix = generateMatrix(size);</div><div class="line">        printf(<span class="string">"Matrix size %dx%d generated\n"</span>,size,size);</div><div class="line">        printMatrix(matrix,size);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span></div><div class="line"><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span></div><div class="line"><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span></div><div class="line"><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span></div><div class="line"><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span><span class="regexp">////</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2015/10/07/Matrixinvert/">Matrix invert</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">Song Li</a></p>
+        <p><span>Created:</span>2015-10-07, 20:25:18</p>
+        <p><span>Updated:</span>2017-05-31, 11:08:46</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2015/10/07/Matrixinvert/" title="Matrix invert">http://blog.songli.us/2015/10/07/Matrixinvert/</a>
+            <span class="copy-path" data-clipboard-text="From http://blog.songli.us/2015/10/07/Matrixinvert/　　By Song Li" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2015/10/16/SortListusemergesort/">
+                    Sort List use merge sort
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2015/10/06/SimpleNetwork/">
+                    Simple Network
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+<script>
+    var valueHide = "Hide";
+    var valueShow = "Show";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <li id="bds_twi"><a href="#" class="bds_twi" data-cmd="twi" title="分享到推特"></a></li>
+            <li id="bds_tsina"><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a></li>
+            <li id="bds_sqq"><a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a></li>
+            <li id="bds_copy"><a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a></li>
+            <li id="bds_mail"><a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a></li>
+            <li id="bds_weixin"><a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a></li>
+            <li id="bds_more"><a href="#" class="bds_more" data-cmd="more"></i></a></li>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Matrix invert　| Song Li(Seanlee) Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2015/10/07/Matrixinvert/" data-title="Matrix invert" data-url="http://blog.songli.us/2015/10/07/Matrixinvert/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"songlius"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/10/16/SortListusemergesort/" title="Pre: Sort List use merge sort">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/10/06/SimpleNetwork/" title="Next: Simple Network">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/04/17/Try-to-use-Alpha/">Try to use Alpha</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Feb2528/">Feb25-28</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/02/PianosheetofDeborahsTheme/">Piano sheet of Deborah's Theme</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/26/leetcodeMissingNumber/">leetcode Missing Number</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/26/leetcodeUglyNumberII/">leetcode Ugly Number II</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/21/TowerofHanoi/">Tower of Hanoi</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/20/HeapinsertionanddeletioninC/">Heap insertion and deletion in C</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/20/verybasichashtable/">Very basic hashtable</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/17/Quicksort/">Quicksort</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/17/Heapsort/">Heapsort</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/17/DistanceCalculatorGUI/">Distance Calculator GUI</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/16/SortListusemergesort/">Sort List use merge sort</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/07/Matrixinvert/">Matrix invert</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/06/SimpleNetwork/">Simple Network</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/05/Myfmt/">Myfmt</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/07/MaximalSquare/">Maximal Square</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/07/CountCompleteTreeNodes/">Count Complete Tree Nodes</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/31/U6dd8U5b9dU7a0bU5e8fU5458U7684U7ecfU5386/">淘宝程序员的经历</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/04/05/U6700U5c0fU5272/">最小割</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/23/U73edU7ea7U89c6U9891U8ba1U5212/">班级视频计划</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/23/U5230U53d1U7ebfU8bbeU8ba1U9057U4f20U7b97U6cd5/">到发线设计遗传算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/06/2048/">2048</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/05/Stackoverflow/">Stackoverflow</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/23/U8681U7fa4U7b97U6cd5U53caU5176U5728U5217U8f66U89e3U4f53U987aU5e8fU7f16U6392U7684U5e94U7528/">蚁群算法及其在列车解体顺序编排的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/09/IRST/">IRST</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/03/Minimumdominatingset/">Minimum Dominating Set</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/12/13/ab/">a+b</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/11/01/U79cb/">秋</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/31/exeprogram/">exe程序捆绑运行的设计实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/27/U6495U626fU81eaU5df1/">撕扯自己</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/13/U751fU65e5U5c0fU8bb0/">生日小记</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/02/06/U796dU5960/">祭奠</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 Song Li
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >Site Visitors: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">Page Hits: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.1.22/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-74687031-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
